@@ -1,2 +1,0 @@
-# Daily-Planning-
-daily planning 
