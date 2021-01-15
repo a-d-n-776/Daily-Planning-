@@ -28,6 +28,6 @@ Please liaise with him and get back to me by tomorrow afternoon with your questi
 10-01-2021(Sunday)-Scrm Call(8-8.30)- 
 11-01-2021(Monday)-Scrm Call(8-8.30)- Krishnamurthi asking to mail sandeep and cc mention
 12-01-2021(Tusday)-Scrm Call(8-8.30)
-13-01-2021(Wednesday)-4pm IST sprint call(Not happened) - Scrm Call(8-8.30)
+13-01-2021(Wednesday)-4pm IST sprint call(Not happened) - Scrm Call(8-8.30)-Not Attended Bhuvanesh info dont attend
 
 
