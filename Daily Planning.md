@@ -29,13 +29,17 @@ Please liaise with him and get back to me by tomorrow afternoon with your questi
 11-01-2021(Monday)-Scrm Call(8-8.30)- Krishnamurthi asking to mail sandeep and cc mention
 12-01-2021(Tusday)-Scrm Call(8-8.30)
 13-01-2021(Wednesday)-4pm IST sprint call(Not happened) - Scrm Call(8-8.30)-Not Attended Bhuvanesh info dont attend
-13-01-2021( Thurs day)- Holiday for Makara sankranthi
-13-01-2021(Fri day) - Work
+14-01-2021( Thurs day)- Holiday for Makara sankranthi
+15-01-2021(Fri day) - Work
 From: Kumar, Sandeep, Vodafone UK (External) 
 Sent: Friday, January 15, 2021 2:08 PM
 To: Mateti, Dillibabu, Vodafone UK (External) <
 Cc: Srinivasan, Bhuvaneshwaran, Vodafone UK 
 Subject: KT session for sample application deployment
 When: Friday, January 15, 2021 18:00-19:00.
-
+16-01-2021(Sat day)------Holiday
+17-01-2021(Sun day)------Holday
+18-01-2021(Mon day)------ ALIVE Production CI/CD server set up and sample app deployment sandeep-6pm- Standupcall- kt json bhuvanesh
+19-01-2021(Tus day)---- Sprint 2 - Story Refinement Session & Backlog Grooming(indrajith 5-5.30)- dailly standap- kt section buvanesh8-8.30
+20-01-2021(Fri day)
 
