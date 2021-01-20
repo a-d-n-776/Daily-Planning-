@@ -43,5 +43,5 @@ When: Friday, January 15, 2021 18:00-19:00.
 19-01-2021(Tus day)---- Sprint 2 - Story Refinement Session & Backlog Grooming(indrajith 5-5.30)- dailly standap- kt section buvanesh8-8.30-9.30 explain CI ,CD 
 Sandeep explained Json config in CI Side
 https://jsonformatter.curiousconcept.com/# ,
-20-01-2021(Fri day)
-
+20-01-2021(Wednes day) - dailly standap- kt section buvanesh8-11.30pm-12am explain CI ,CD
+21-01-2021(Thurs day) -
