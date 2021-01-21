@@ -44,4 +44,4 @@ When: Friday, January 15, 2021 18:00-19:00.
 Sandeep explained Json config in CI Side
 https://jsonformatter.curiousconcept.com/# ,
 20-01-2021(Wednes day) - dailly standap- kt section buvanesh8-11.30pm-12am explain CI ,CD
-21-01-2021(Thurs day) -
+21-01-2021(Thurs day) -  dailly standap-
