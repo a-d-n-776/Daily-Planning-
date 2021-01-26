@@ -1,4 +1,39 @@
- var1=$(var1)
+#.predefined variables & Use defined variables
+# https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml
+
+
+
+
+trigger:
+  branches:
+    include:
+    - main
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: CmdLine@2
+      displayName: 'Run a one-line script'
+      inputs:
+        script: echo Hello, world!
+    - task: CmdLine@2
+      displayName: 'Run a multi-line script'
+      inputs:
+        script: |
+          echo Add other tasks to build, test, and deploy your project.
+          echo See https://aka.ms/yaml
+
+          -bash:
+
+
+          echo "repo name : $(Build.Repository.Name)"
+    - task: CmdLine@2
+      inputs:
+        script: |
+          var1=$(var1)
           var2=$(var2)
           str1=$(str1)
           str2=$(str2)
@@ -29,3 +64,27 @@
           echo "Matrix:
           [ $sum $sub ]
           [ $mul $div"]
+
+          Array=([0]=$sum [1]=$sub [2]=$mul [3]=$concat)
+          Array[4]='$concatstrings'
+          echo "${Array[@]}"
+          echo "${!Array[@]}"
+          echo "${#Array[@]}"
+          echo "${Array[0]}"
+
+          
+
+
+
+          echo "repo name : $(Build.Repository.Name)"
+          echo "Agent.Id : $(Agent.Id)"
+          echo "Agent.JobName : $(Agent.JobName)"
+          echo "Agent.JobStatus : $(Agent.JobStatus)"
+          echo "Agent.MachineName : $(Agent.MachineName)"
+          echo "Agent.Name : $(Agent.Name)"
+          echo "Agent.OS : $(Agent.OS)"
+          echo "Agent.OSArchitecture : $(Agent.OSArchitecture)"
+          echo "Agent.TempDirectory : $(Agent.TempDirectory)"
+          echo "Agent.ToolsDirectory : $(Agent.ToolsDirectory)"
+          echo "Agent.WorkFolder : $(Agent.WorkFolder)"
+
