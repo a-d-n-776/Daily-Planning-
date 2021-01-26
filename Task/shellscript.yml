@@ -1,0 +1,47 @@
+trigger:
+  branches:
+    include:
+    - main
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      vmImage: 'ubuntu-latest'
+    steps:
+    - task: CmdLine@2
+      displayName: 'Run a one-line script'
+      inputs:
+        script: echo Hello, world!
+    - task: CmdLine@2
+      displayName: 'Run a multi-line script'
+      inputs:
+        script: |
+          echo Add other tasks to build, test, and deploy your project.
+          echo See https://aka.ms/yaml
+    - task: CmdLine@2
+      inputs:
+        script: |
+          var1=$(var1) #var1=10
+          var2=$(var2) #var1=20
+          str1=$(str1) #str1='Hello'
+          str2=$(str2) #str2= 'World'
+
+          sum=$(($var1 + $var2))
+          sub=$(($var1 - $var2))
+          mul=$(($var1 * $var2))
+          div=$(($var2 / $var1))
+          concat="${var1} ${var2}"
+          concatstrings="${str1} ${str2}"
+
+          echo "variable1 : $var1"
+          echo "variable2 : $var2"
+          echo "String1 : $str1"
+          echo "String2 : $str2"
+
+          echo "Sum Of variables : $sum"
+          echo "Subtraction Of variables : $sub"
+          echo "Multiplication Of variables : $mul"
+          echo "Division Of variables : $div"
+          echo "concatenate Of variables : $concat"
+          echo "concatenate Of strings : $concatstrings"
