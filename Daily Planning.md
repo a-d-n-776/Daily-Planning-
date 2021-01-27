@@ -45,3 +45,13 @@ Sandeep explained Json config in CI Side
 https://jsonformatter.curiousconcept.com/# ,
 20-01-2021(Wednes day) - dailly standap- kt section buvanesh8-11.30pm-12am explain CI ,CD
 21-01-2021(Thurs day) -  dailly standap-
+..
+
+..
+27-01-2021-wednesday-
+json needs jq software or equivalent for parsing
+if you use microsoft hosted agents
+it may not be installed there
+so get the normal params
+and use it
+..
