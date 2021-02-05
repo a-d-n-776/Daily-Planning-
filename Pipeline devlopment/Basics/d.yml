@@ -1,0 +1,43 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: sum_variable_group
+
+
+
+stages:
+- stage: STAGE_1
+  displayName: 'STAGE_1'
+  jobs:
+  
+  - job: Job1A
+    steps:
+    - task: CmdLine@2
+      displayName: 'Run a one-line script'
+      inputs:
+        script: echo Hello, world!
+
+  - job: Job1B
+  - job: Job1C
+  - job: Job1D
+  - job: Job1E
+
+- stage: STAGE_2
+  displayName: 'STAGE_2'
+  jobs:
+  - job: Job2A
+  - job: Job2B
+  - job: Job2C
+  - job: Job2D
+
+- stage: STAGE_3
+  displayName: 'STAGE_3'
+  jobs:
+  - job: Job1A
+  - job: Job3B
+  - job: Job3C
+  - job: Job3D
