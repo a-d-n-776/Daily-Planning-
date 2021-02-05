@@ -55,3 +55,11 @@ it may not be installed there
 so get the normal params
 and use it
 ..
+28-
+.
+.
+04-Feb-21-(Thurday)- Worked on Automation test Scripts-
+puppeteer@5.2.1 install /opt/SP/pega/azure_agents/azure_devops_build_agent_3/_work/r10/a/_PEGA_ALIVE_NEBULA_CC_JANUS_Automation_Scripts/node_modules/puppeteer
+2021-02-04T17:03:59.4328868Z > node install.js
+
+05-Feb-21-(Friday).- 
