@@ -69,3 +69,12 @@ Error: Cannot find module '/opt/SP/pega/azure_agents/azure_devops_build_agent_3/
 16-02-21-
 Authorization: Basic
 https://www.blitter.se/utils/basic-authentication-header-generator/
+
+23-02-21-Tusday---
+https://www.toolsqa.com/postman/basic-authentication-in-postman/
+
+https://postman-echo.com/basic-auth
+Basic auth
+
+postman
+Password
