@@ -4,3 +4,54 @@ Linux_For_DevOps.......(Youtub link).....( https://www.youtube.com/watch?v=_7TaF
 #1 - What is Operating System | How OS works | How Operating System Works | What is OS:--------
 #2 - Linux for DevOps | Create an AWS Free Tier Account | Create a Free AWS Cloud Account....
 3 - Linux for DevOps | Create an AWS EC2 instance | How to Create a Linux Server in the Cloud ----pem(linu) ...ppk(for putty) ---use pty to change
+#4 - Linux for DevOps | Connect to a AWS Linux Instance with MobaXterm | MobaXterm for Linux
+#5 - Linux for DevOps | Connect to a Linux EC2 Instance from MAC | MAC terminal for Linux
+#6 - Linux for DevOps |Linux Filesystem Hierarchy------------------(https://www.youtube.com/watch?v=9if2LtFKECI&list=PLxzKY3wu0_FJULpG8jwSkXzseNWy4hqgI&index=6)
+ec2-user@ip-10-0-0-143 ~]
+sudo su -
+ls /       # Here / is root
+[root@ip-10-0-0-143 ~]# ls /
+bin   dev  home  lib64  media  opt   root  sbin  sys  usr
+boot  etc  lib   local  mnt    proc  run   srv   tmp  var
+[root@ip-10-0-0-143 ~]# pwd
+/root
+[root@ip-10-0-0-143 ~]# cd ..
+[root@ip-10-0-0-143 /]# pwd
+/
+[root@ip-10-0-0-143 /]#
+root----- root user only-- sbin(commandes executed stored)
+ home--------other than root users---bin(commandes executed stored)
+ usr -default softwares stored
+#7 - Linux for DevOps - Linux Basic commands | Linux basic commands for Beginners----
+date
+cal
+uptime
+whoami
+users
+[root@ip-10-0-0-143 ~]# id
+uid=0(root) gid=0(root) groups=0(root)
+[root@ip-10-0-0-143 ~]# who
+ec2-user pts/0        2021-03-01 20:03 (157.45.157.43)
+[root@ip-10-0-0-143 ~]# w
+ 20:13:45 up 40 min,  1 user,  load average: 0.00, 0.00, 0.00
+USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ec2-user pts/0    157.45.157.43    20:03    1.00s  0.03s  0.00s sshd: ec2-user
+man who
+man cat
+..
+man cat
+
+#8 - Linux for DevOps - Commands to read a file | Linux commands to read a file
+ls
+pwd
+ls -a
+cat file1
+clear
+less file1
+more file1
+head file1  -----1st 10 line
+tail file1  -----last 10 lines
+head -20 file1  -----1st 20 line
+tail -20 file1  -----last 20 lines
+page file1
+
