@@ -54,4 +54,23 @@ tail file1  -----last 10 lines
 head -20 file1  -----1st 20 line
 tail -20 file1  -----last 20 lines
 page file1
+---------------------------------------------------------------------------
+#9 - Linux for DevOps - Different ways to create a file | How to create a file on Linux
+touch file1.txt
+ls
+ls -l
+ls -l -t
+ls -l -t -r
+ls -ltr
+cat > file1 -----waiting curese to write data in file1
+nano
+vi
+rm
+mkdir
+rmdir
+rm -rf
+
+#10 - Linux for DevOps - Edit or append content of a file | Modifying existing file using vi
+
+
 
