@@ -92,6 +92,7 @@ cd .. bac side #parent directory
 cp   - cpoy
 mv   -move
 find -find a file
+file file1 or folder1
 grep  -search for a patteren in a file
 cd -switch b/t directoryes
 diff -find content differnce b/t two files
@@ -114,6 +115,48 @@ mv file1 folder2    #moving file1 to folder2
 mv file1 file2  # renaming file to file2  (IMP asking renaming file in interview)
 
 #15 - Linux for DevOps - cd command to change directory | How to change directories on Linux
+
+cd / # Root direct
+pwd # Present working dir
+cd .. #Parent dir
+cd /
+ls         #( Dager rm -rf *   -dont use this dir her all dir delted )
+tree
+cd root
+cd ..
+cd temp
+pwd
+cd /temp # im in any dir go /(root) then search for temp dir and go that dir
+cd /temp/folder1/folder2   # from any dir go root under temp under folder1 under folder2 go that dir or (  cd ../temp/folder1/folder2  )
+
+#16 - Linux for DevOps - How to search a file on Linux | find, diff and file commands
+
+diff - find difference b/t in 2 files
+find - find a file
+syntax: find / -option filename
+
+  # option     usage
+   -name       For searching a file with its name
+   -user       For files whose owner is a particular usear
+   -group      For files belonging  to particular group
+   -----
+   find / -name file1 # finding file1 in all folders
+   
+[root@ip-10-0-0-143 f1]# cp file1 /tmp
+[root@ip-10-0-0-143 f1]# find / -name file1
+/tmp/file1
+/folder1/folder1a/file1
+/folder1/f1/file1
+[root@ip-10-0-0-143 f1]#
+
+dif file2 file1
+vi file2  # i ,esc,:wq enter
+
+file file1   #Type of file ASCII or ...
+file folser1 #its a dir shown inf
+
+
+
 
 
 
