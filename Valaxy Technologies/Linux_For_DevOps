@@ -202,11 +202,13 @@ stands for stream editor, whic is used to search a word in the file and replace 
 NOTE:-it will only modify the output,but there will be no change in the original file.
 
 Examples:-
-sed 's/old_text/new_text/' file-name
-sed 's/old_text/new_text/g' file_name
-sed -i 's/old_text/new_text/' fil_name
-sed -n '5,10p' file_name
-sed '10,20d' file_name
+sed 's/old_text/new_text/' file_name # s(search) the olde_text replace with new_text in that fule_name(Not effect original file just output effected)--- alone (s)
+sed 's/old_text/new_text/g' file_name  # s(search) , g(global) the olde_text replace with new_text(Not effect file) --all(s) ,(g)
+sed -i 's/old_text/new_text/' fil_name   #the olde_text replace with new_text in that fule_name(effect original file updated)
+sed -n '5,10p' file_name  # display some particular lines 5-10 for in b/t lines display .(like head and taile.)
+sed '10,20d' file_name # it romves 10 20 lines in a file & remaining shows
+
+
 
 
 
