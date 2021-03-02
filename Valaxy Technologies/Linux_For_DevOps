@@ -153,7 +153,7 @@ dif file2 file1
 vi file2  # i ,esc,:wq enter
 
 file file1   #Type of file ASCII or ...
-file folser1 #its a dir shown inf
+file folder1 #its a dir shown inf
 
 #17 - Linux for DevOps - grep command | Search a pattern in a file on Linux | Search for a keyword
 
@@ -230,6 +230,25 @@ sed -n '5,10d' file1   #not shows 5 to 10 lines in file1 remainin all lines show
 sed 's/#/ /' file1  #Removing # in the file1
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #19 - Linux for DevOps - Creating a User | useradd command | How to add a user on Linux
+USER MANAGMENT:---
+In Linux there are 3re types of users
+-super or root user:---user is the most powerfull user administrater
+-system user:-- users created by softwares or applications.
+-Normal user:-- Normal users are users created by root user
+
+
+Type                  Example                  Home Directary                       Shell
+--------------------------------------------------------------------------------------------------
+
+Super user              Root                     /root                            /bin/bash
+
+System user            ftp,ssh,apache            /var/ftp/,etc                     /sbin/nologin
+
+Normal user          vistor,ec2-user            /home/username                    /bin/bash
+
+
+
+......................................................................................................
 
 
 
