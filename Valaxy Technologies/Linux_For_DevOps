@@ -213,17 +213,26 @@ sed '10,20d' file_name # it romves 10 20 lines in a file & remaining shows
 
 ls -l | grep file
 cat file1
-sed 's/ansible/linux/' file1  # replacing ansible to linux in file1 (But Ansible .ansible & ansible.cfg in file1 are not replaced  So only ansible replaced )
-sed 's/ansible/linux/g' file1   #replacing ansible to linux in file1 ( including   .ansible & ansible.cfg in file1 not Ansible - case sen not included)
-sed 's/ansible/linux/ig' file1  #replacing ansible to linux in file1 ( including   .ansible & ansible.cfg in file1 & Ansible - case sensitiv also changed)
+sed 's/ansible/linux/' file1  # replacing ansible to linux in file1 (But Ansible .ansible & ansible.cfg in file1 are not replaced  So only ansible replaced ) # orginal file not changed
+sed 's/ansible/linux/g' file1   #replacing ansible to linux in file1 ( including   .ansible & ansible.cfg in file1 not Ansible - case sen not included) # orginal file not changed
+sed 's/ansible/linux/ig' file1  #replacing ansible to linux in file1 ( including   .ansible & ansible.cfg in file1 & Ansible - case sensitiv also changed) # orginal file not changed
 # NOTE- file1 not changed in all abou cmds executions only o/p displase
 cat file1
 '''''''''''''
 if you want replace file1 use belocmds included -i
 
-sed -i 's/ansible/linux/' file1      #file1 is replace
-sed -i 's/ansible/linux/g' file1      #file1 is replace
-sed -i 's/ansible/linux/ig' file1       #file1 is replace
+sed -i 's/ansible/linux/' file1      #file1 is replace # orginal file  changed
+sed -i 's/ansible/linux/g' file1      #file1 is replace # orginal file  changed
+sed -i 's/ansible/linux/ig' file1       #file1 is replace # orginal file  changed
+
+sed -n '5,10p' file1   #shows 5 to 10 lines in file1
+sed -n '5,10d' file1   #not shows 5 to 10 lines in file1 remainin all lines shows in file1
+sed 's/#/ /' file1  #Removing # in the file1
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+#19 - Linux for DevOps - Creating a User | useradd command | How to add a user on Linux
+
+
+
 
 
 
