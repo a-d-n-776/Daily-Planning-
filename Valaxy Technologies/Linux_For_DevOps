@@ -197,6 +197,17 @@ grep ^h file1   #in file1 starting with h only shows
 
 ....................................................................
 #18 - Linux for DevOps - Replace a Word in a File | sed command to replace a word in a file
+sed command:---
+stands for stream editor, whic is used to search a word in the file and replace it with the word required to be in the output.
+NOTE:-it will only modify the output,but there will be no change in the original file.
+
+Examples:-
+sed 's/old_text/new_text/' file-name
+sed 's/old_text/new_text/g' file_name
+sed -i 's/old_text/new_text/' fil_name
+sed -n '5,10p' file_name
+sed '10,20d' file_name
+
 
 
 
