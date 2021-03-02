@@ -66,11 +66,27 @@ cat > file1 -----waiting curese to write data in file1
 nano
 vi
 rm
-mkdir
-rmdir
-rm -rf
+mkdir folder1 folder2 folder3
+cd folder1
+rmdir folder1
+yum install tree -y
+tree
+rm file1
+rm file1 file2 file3 #asking conformation
+rm -f file1  #not asking conformation
+ 
+rm -rf file1
+rm dir foder1 #if folder1 inside not have any folder its okay
+rm -f -r folder1 or rm -rf  #if folder inside haveing any folders also delted
+rm -rf *  #Dangarous command in linux once delted we can not recover..
+rm dir folder2 folder3 folder4   #we can remove more folders & files in this way
+cd .. bac side #parent directory
+
 
 #10 - Linux for DevOps - Edit or append content of a file | Modifying existing file using vi
 
+
+#12 - Linux for DevOps - Remove Files and Directories | How to remove files and directories
+#13 - Linux for DevOps - cp command to copy files or directories
 
 
