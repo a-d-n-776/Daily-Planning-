@@ -155,6 +155,60 @@ vi file2  # i ,esc,:wq enter
 file file1   #Type of file ASCII or ...
 file folser1 #its a dir shown inf
 
+#17 - Linux for DevOps - grep command | Search a pattern in a file on Linux | Search for a keyword
+
+grep #Global regular expressiion print
+it is used to pick out the required expression from the file and print the output.
+syntax:  grep <patron> filename  # used to just want to know particular word or patran avilable
+[root@ip-10-0-0-143 f1]# grep he file1
+heloo
+[root@ip-10-0-0-143 f1]#
+
+cat /etc/ssh/sshd_config
+more /etc/ssh/sshd_config
+
+[root@ip-10-0-0-143 /]# grep Permit /etc/ssh/sshd_config
+#PermitRootLogin yes
+#PermitEmptyPasswords no
+# the setting of "PermitRootLogin without-password".
+#PermitTTY yes
+#PermitUserEnvironment no
+#PermitTunnel no
+#       PermitTTY no
+[root@ip-10-0-0-143 /]#
+
+ grep -i Permit /etc/ssh/sshd_config   # -i means ignore the case sensity ( P or p ok )
+ 
+ ls -l   # shows lot of files & dir under etc
+ 
+ [root@ip-10-0-0-143 etc]# ls -l | grep environment
+-rw-r--r--  1 root root        0 Feb 21  2020 environment
+[root@ip-10-0-0-143 etc]# pwd
+/etc
+[root@ip-10-0-0-143 etc]#
+
+ls -l | grep environment          # using |(pipe symbal) we can search file or folder ls -l is indupt of grep 
+#So pip(|) is used to comined two cmds
+ls -l | grep d   # search d in ls-l folder & files(any wher)
+
+ls -l | grep ^d   # search d in ls-l folder & files(wher file or folder startng with only d) -so carret(  ^ ) symble used.
+
+grep ^h file1   #in file1 starting with h only shows
+
+....................................................................
+#18 - Linux for DevOps - Replace a Word in a File | sed command to replace a word in a file
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
