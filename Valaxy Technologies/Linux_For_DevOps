@@ -230,6 +230,7 @@ sed -n '5,10d' file1   #not shows 5 to 10 lines in file1 remainin all lines show
 sed 's/#/ /' file1  #Removing # in the file1
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #19 - Linux for DevOps - Creating a User | useradd command | How to add a user on Linux
+( https://www.youtube.com/watch?v=rjbtW4y4wX4&list=PLxzKY3wu0_FJULpG8jwSkXzseNWy4hqgI&index=19 )
 USER MANAGMENT:---
 In Linux there are 3re types of users
 -super or root user:---user is the most powerfull user administrater
@@ -249,6 +250,83 @@ Normal user          vistor,ec2-user            /home/username                  
 
 
 ......................................................................................................
+
+cd /
+whoami
+id root
+cat /etc/passwd
+
+
+USER CREATION
+When ever user created in LINUX, Below things Happen by default.
+
+-A Home Direcotry is created( /home/username )
+-uniqe UID & GID are given to user
+-An entery in /etc/passwd
+
+User creation 
+Syntax;-  useradd <option>  <username>
+[root@ip-10-0-0-143 /]# useradd naveen
+[root@ip-10-0-0-143 /]# cd /home
+[root@ip-10-0-0-143 home]# ll
+total 0
+drwx------ 3 ec2-user ec2-user 95 Mar  1 20:03 ec2-user
+drwx------ 2 naveen   naveen   62 Mar  2 17:33 naveen
+[root@ip-10-0-0-143 home]# id naveen
+uid=1001(naveen) gid=1001(naveen) groups=1001(naveen)
+[root@ip-10-0-0-143 home]# useradd kumar
+[root@ip-10-0-0-143 home]# ll
+total 0
+drwx------ 3 ec2-user ec2-user 95 Mar  1 20:03 ec2-user
+drwx------ 2 kumar    kumar    62 Mar  2 17:34 kumar
+drwx------ 2 naveen   naveen   62 Mar  2 17:33 naveen
+
+Options are:-
+. -u user id
+. -G Secondary group id
+. -g primary group id
+. -d home directory
+. -c comment
+. -s shell
+
+
+[root@ip-10-0-0-143 home]# id kumar
+uid=1002(kumar) gid=1002(kumar) groups=1002(kumar)
+
+[root@ip-10-0-0-143 home]# cat /etc/passwd
+ec2-user:x:1000:1000:EC2 Default User:/home/ec2-user:/bin/bash
+naveen:x:1001:1001::/home/naveen:/bin/bash
+kumar:x:1002:1002::/home/kumar:/bin/bash
+
+cat /etc/group
+ec2-user:x:1000:
+naveen:x:1001:
+kumar:x:1002:
+
+#adding kumar to naveen group or vias versa
+[root@ip-10-0-0-143 home]# usermod -G naveen kumar
+[root@ip-10-0-0-143 home]# id naveen
+uid=1001(naveen) gid=1001(naveen) groups=1001(naveen)
+[root@ip-10-0-0-143 home]# id kumar
+uid=1002(kumar) gid=1002(kumar) groups=1002(kumar),1001(naveen)
+[root@ip-10-0-0-143 home]#
+
+
+-----------------------------
+#20 - Linux for DevOps - Enable password based login to an EC2 instance
+cat /etc/passwd
+passwd naveen
+we can login as a user needed some setup in AWS----------
+nano /etc/ssh/sshd_config
+PasswordAuthentication no to chane yes     cnt+o ent then cnt+x
+ service sshd reload
+ 
+[naveen@ip-10-0-0-143 ~]$ whoami
+naveen
+[naveen@ip-10-0-0-143 ~]$ pwd
+/home/naveen
+
+
 
 
 
