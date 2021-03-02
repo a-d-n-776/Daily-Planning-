@@ -203,10 +203,28 @@ NOTE:-it will only modify the output,but there will be no change in the original
 
 Examples:-
 sed 's/old_text/new_text/' file_name # s(search) the olde_text replace with new_text in that fule_name(Not effect original file just output effected)--- alone (s)
-sed 's/old_text/new_text/g' file_name  # s(search) , g(global) the olde_text replace with new_text(Not effect file) --all(s) ,(g)
+sed 's/old_text/new_text/g' file_name  # s(search) , g(global) the olde_text replace with new_text( effect all in that file) --all(s-select only) ,(g-global all)
 sed -i 's/old_text/new_text/' fil_name   #the olde_text replace with new_text in that fule_name(effect original file updated)
 sed -n '5,10p' file_name  # display some particular lines 5-10 for in b/t lines display .(like head and taile.)
 sed '10,20d' file_name # it romves 10 20 lines in a file & remaining shows
+
+
+#https://github.com/ansible/ansible/blob/devel/examples/ansible.cfg
+
+ls -l | grep file
+cat file1
+sed 's/ansible/linux/' file1  # replacing ansible to linux in file1 (But Ansible .ansible & ansible.cfg in file1 are not replaced  So only ansible replaced )
+sed 's/ansible/linux/g' file1   #replacing ansible to linux in file1 ( including   .ansible & ansible.cfg in file1 not Ansible - case sen not included)
+sed 's/ansible/linux/ig' file1  #replacing ansible to linux in file1 ( including   .ansible & ansible.cfg in file1 & Ansible - case sensitiv also changed)
+# NOTE- file1 not changed in all abou cmds executions only o/p displase
+cat file1
+'''''''''''''
+if you want replace file1 use belocmds included -i
+
+sed -i 's/ansible/linux/' file1      #file1 is replace
+sed -i 's/ansible/linux/g' file1      #file1 is replace
+sed -i 's/ansible/linux/ig' file1       #file1 is replace
+
 
 
 
