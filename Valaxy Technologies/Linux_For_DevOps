@@ -88,6 +88,7 @@ cd .. bac side #parent directory
 
 #12 - Linux for DevOps - Remove Files and Directories | How to remove files and directories
 #13 - Linux for DevOps - cp command to copy files or directories
+............
 cp   - cpoy
 mv   -move
 find -find a file
@@ -98,7 +99,7 @@ sed - search and replace particular patteren
 chmod -change file permission
 chown - change ownership of a file
 file - show what kind of file it is
-
+...................................
 yum install nano -y
 cp file1 file2 #file1 source file to wher to copy file2
 cp file1 folder1 # file1 copying to create new file1 in folder1 directory
@@ -108,6 +109,12 @@ cat folder1/file1 # to read the data in file1 in folder1
 cp -r folder1 folder2 or cp -R folder1 folder2   # from folder1 files all copy and created new folder2 with all files.
 
 #14 - Linux for DevOps - Move or Rename a file | MV command on Linux
+
+mv file1 folder2    #moving file1 to folder2
+mv file1 file2  # renaming file to file2  (IMP asking renaming file in interview)
+
+#15 - Linux for DevOps - cd command to change directory | How to change directories on Linux
+
 
 
 
