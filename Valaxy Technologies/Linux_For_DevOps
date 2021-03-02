@@ -320,7 +320,9 @@ we can login as a user needed some setup in AWS----------
 nano /etc/ssh/sshd_config
 PasswordAuthentication no to chane yes     cnt+o ent then cnt+x
  service sshd reload
- 
+  Login to server 
+  naveen@publicip
+  asking pass 123..
 [naveen@ip-10-0-0-143 ~]$ whoami
 naveen
 [naveen@ip-10-0-0-143 ~]$ pwd
