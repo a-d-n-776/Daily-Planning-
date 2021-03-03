@@ -402,3 +402,14 @@ The keys Function:::---------
 
 https://www.howtogeek.com/529219/how-to-parse-json-files-on-the-linux-command-line-with-jq/
 
+jq ".people.[0] | keys" astro.json
+jq ".people | keys" astro.json
+-------------------------------------
+The has() Function:::---
+You can use the has() function to interrogate the JSON and see whether an object has a particular key name. Note the key name must be wrapped in quotation marks. We’ll wrap the filter command in single quotes ('), as follows:
+
+jq '.[] | has("nametype")' strikes.json
+
+
+Don’t Go Near JSON Without It
+The jq utility is the perfect example of the professional, powerful, fast software that makes living in the Linux world such a pleasure.
