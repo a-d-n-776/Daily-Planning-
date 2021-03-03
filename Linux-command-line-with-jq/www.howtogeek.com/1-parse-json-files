@@ -123,3 +123,59 @@ we  use the JSON dot notation to access the values. We must also include the bra
 "Victor Glover"
 "Shannon Walker"
 "Soichi Noguchi"
+
+jq ".people[].craft" astro.json
+[root@ip-10-0-0-143 folder1]# jq ".people[].craft" astro.json
+"ISS"
+"ISS"
+"ISS"
+"ISS"
+"ISS"
+"ISS"
+"ISS"
+
+The following number of objects are in this array::-
+
+[root@ip-10-0-0-143 folder1]# jq ".people[1].name" astro.json
+"Kate Rubins"
+[root@ip-10-0-0-143 folder1]# jq ".people[3].name" astro.json
+"Mike Hopkins"
+[root@ip-10-0-0-143 folder1]# jq ".people[-1].name" astro.json
+"Soichi Noguchi"
+[root@ip-10-0-0-143 folder1]# jq ".people[-2].name" astro.json
+"Shannon Walker"
+
+You can also provide a start and end object within the array. This is called “slicing,” and it can be a little confusing. Remember the array uses a zero-offset.
+
+To retrieve the objects from index position two, up to (but not including) the object at index position four, we type the following command:
+
+[root@ip-10-0-0-143 folder1]# jq ".people[2:4]" astro.json
+[
+  {
+    "craft": "ISS",
+    "name": "Sergey Kud-Sverchkov"
+  },
+  {
+    "craft": "ISS",
+    "name": "Mike Hopkins"
+  }
+]
+
+################
+------------------------------------------------------------------------------------------------------------------------------------------------
+How to Use Pipes with Filters::::::::----
+
+You can pipe the output from one filter to another, and you don’t have to learn a new symbol. The same as the Linux command line, jq uses the vertical bar (|) to represent a pipe.
+We’ll tell jq to pipe the people array into the .name filter, which should list the names of the astronauts in the terminal window.
+
+[root@ip-10-0-0-143 folder1]# jq ".people[] | .name" astro.json
+"Sergey Ryzhikov"
+"Kate Rubins"
+"Sergey Kud-Sverchkov"
+"Mike Hopkins"
+"Victor Glover"
+"Shannon Walker"
+"Soichi Noguchi"
+
+--------------------------------------------------------------------------------------------------------------------------------------
+Creating Arrays and Modifying Results:
