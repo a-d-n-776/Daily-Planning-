@@ -179,3 +179,38 @@ We’ll tell jq to pipe the people array into the .name filter, which should lis
 
 --------------------------------------------------------------------------------------------------------------------------------------
 Creating Arrays and Modifying Results:
+
+curl -s http://api.open-notify.org/iss-now.json | jq . > iss.json
+
+[root@ip-10-0-0-143 folder1]# jq . iss.json
+{
+  "message": "success",
+  "iss_position": {
+    "latitude": "17.4337",
+    "longitude": "-124.4649"
+  },
+  "timestamp": 1614795003
+}
+
+##
+We can use jq‘s delete function, del(), to delete a key:value pair. To delete the message key:value pair, we type this command:
+[root@ip-10-0-0-143 folder1]# jq "del(.message)" iss.json
+{
+  "iss_position": {
+    "latitude": "17.4337",
+    "longitude": "-124.4649"
+  },
+  "timestamp": 1614795003
+}
+
+##IMP: Abou--: Note this doesn’t actually delete it from the “iss.json” file; it just removes it from the output of the command.
+If you need to create a new file without the message key:value pair in it, run the command, and then redirect the output into a new file.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+More Complicated JSON Objects:::::-----------
+
+
+
+
+
