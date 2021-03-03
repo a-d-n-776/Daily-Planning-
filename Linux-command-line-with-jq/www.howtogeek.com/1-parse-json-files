@@ -210,7 +210,194 @@ If you need to create a new file without the message key:value pair in it, run t
 
 More Complicated JSON Objects:::::-----------
 
+This is a bigger file with a far more complicated JSON structure than those we’ve dealt with previously.
+curl -s https://data.nasa.gov/resource/y77d-th95.json | jq . > strikes.json
+less strikes.json     # to exit q
 
+[
+  {
+    "name": "Aachen",
+    "id": "1",
+    "nametype": "Valid",
+    "recclass": "L5",
+    "mass": "21",
+    "fall": "Fell",
+    "year": "1880-01-01T00:00:00.000",
+    "reclat": "50.775000",
+    "reclong": "6.083330",
+    "geolocation": {
+      "type": "Point",
+      "coordinates": [
+        6.08333,
+        50.775
+      ]
+    }
+  },
+
+    
+As shown above, the file begins with an opening bracket ([), so the entire object is an array.
+The objects in the array are collections of key:value pairs, and there’s a nested object called geolocation.
+The geolocation object contains further key:value pairs, and an array called coordinates.
+
+Let’s retrieve the names of the meteor strikes from the object at index position 995 through the end of the array.
+We’ll type the following to pipe the JSON through three filters:
+[root@ip-10-0-0-143 folder1]# jq ".[995:] | .[] | .name" strikes.json
+"Tirupati"
+"Tissint"
+"Tjabe"
+"Tjerebon"
+"Tomakovka"
+
+#The filters function in the following ways:
+.[995:]: This tells jq to process the objects from array index 995 through the end of the array. No number after the colon ( : ) is what tells jq to continue to the end of the array.
+.[]: This array iterator tells jq to process each object in the array.
+.name: This filter extracts the name value.
+
+#With a slight change, we can extract the last 10 objects from the array. A “-10” instructs jq to start processing objects 10 back from the end of the array.
+We type the following:
+jq ".[-10:] | .[] | .name" strikes.json
+[root@ip-10-0-0-143 folder1]# jq ".[-10:] | .[] | .name" strikes.json
+"Tianzhang"
+"Tieschitz"
+"Tilden"
+"Tillaberi"
+"Timochin"
+"Tirupati"
+"Tissint"
+"Tjabe"
+"Tjerebon"
+"Tomakovka"
+
+#select a single object:
+jq ".[650].name" strikes.json
+
+#We can also apply slicing to strings. To do so, we’ll type the following to request the first four characters of the name of the object at array index 234:
+jq ".[234].name[0:4]" strikes.json
+[root@ip-10-0-0-143 folder1]# jq ".[234].name[0:4]" strikes.json
+"Derg"
+
+# specific object in its entirety.
+[root@ip-10-0-0-143 folder1]# jq ".[234]" strikes.json
+{
+  "name": "Dergaon",
+  "id": "6664",
+  "nametype": "Valid",
+  "recclass": "H5",
+  "mass": "12500",
+  "fall": "Fell",
+  "year": "2001-01-01T00:00:00.000",
+  "reclat": "26.683330",
+  "reclong": "93.866670",
+  "geolocation": {
+    "type": "Point",
+    "coordinates": [
+      93.86667,
+      26.68333
+    ]
+  }
+}
+[root@ip-10-0-0-143 folder1]#
+
+# see only the values
+[root@ip-10-0-0-143 folder1]# jq ".[234][]" strikes.json
+"Dergaon"
+"6664"
+"Valid"
+"H5"
+"12500"
+"Fell"
+"2001-01-01T00:00:00.000"
+"26.683330"
+"93.866670"
+{
+  "type": "Point",
+  "coordinates": [
+    93.86667,
+    26.68333
+  ]
+}
+[root@ip-10-0-0-143 folder1]#
+
+#To retrieve multiple values from each object, we separate them with commas in the following command:
+jq ".[450:455] | .[] | .name, .mass" strikes.json
+
+#To see the coordinates values for the object at index position 121 of the array, we type the following command:
+
+[root@ip-10-0-0-143 folder1]# jq ".[121].geolocation.coordinates[]" strikes.json
+25.8
+60.4
+[root@ip-10-0-0-143 folder1]# jq ".[121]" strikes.json
+{
+  "name": "Bjurböle",
+  "id": "5064",
+  "nametype": "Valid",
+  "recclass": "L/LL4",
+  "mass": "330000",
+  "fall": "Fell",
+  "year": "1899-01-01T00:00:00.000",
+  "reclat": "60.400000",
+  "reclong": "25.800000",
+  "geolocation": {
+    "type": "Point",
+    "coordinates": [
+      25.8,
+      60.4
+    ]
+  }
+}
+[root@ip-10-0-0-143 folder1]#
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+The length Function:::::::--------
+
+
+#The jq length function gives different metrics according to what it’s been applied, such as:
+Strings: The length of the string in bytes.
+Objects: The number of key:value pairs in the object.
+Arrays: The number of array elements in the array.
+The following command returns the length of the name value in 10 of the objects in the JSON array, starting at index position 100:
+
+[root@ip-10-0-0-143 folder1]# jq ".[100:110] | .[].name | length" strikes.json
+6
+6
+6
+13
+8
+9
+6
+7
+6
+6
+[root@ip-10-0-0-143 folder1]#
+
+#To see how many key:value pairs are in the first object in the array, we type this command:
+jq ".[0] | length" strikes.json
+[root@ip-10-0-0-143 folder1]# jq ".[0]" strikes.json
+{
+  "name": "Aachen",
+  "id": "1",
+  "nametype": "Valid",
+  "recclass": "L5",
+  "mass": "21",
+  "fall": "Fell",
+  "year": "1880-01-01T00:00:00.000",
+  "reclat": "50.775000",
+  "reclong": "6.083330",
+  "geolocation": {
+    "type": "Point",
+    "coordinates": [
+      6.08333,
+      50.775
+    ]
+  }
+}
+[root@ip-10-0-0-143 folder1]# jq ".[0] | length" strikes.json
+10
+
+#
+------------------------------------------------------------------------------------------------
+The keys Function:::---------
 
 
 
