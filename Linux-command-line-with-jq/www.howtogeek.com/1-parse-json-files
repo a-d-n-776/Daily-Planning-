@@ -1,1 +1,26 @@
 https://www.howtogeek.com/529219/how-to-parse-json-files-on-the-linux-command-line-with-jq/
+https://jqplay.org/
+
+yum install jq -y
+
+curl -s http://api.open-notify.org/iss-now.json
+[root@ip-10-0-0-143 folder1]# curl -s http://api.open-notify.org/iss-now.json
+{"message": "success", "iss_position": {"latitude": "-48.3007", "longitude": "22.2671"}, "timestamp": 1614791448}
+
+
+#jq uses filters to parse JSON, and the simplest of these filters is a period (.), which means “print the entire object.” By default, jq pretty-prints the output.
+# http://api.open-notify.org/iss-now.json
+
+curl -s http://api.open-notify.org/iss-now.json | jq .
+[root@ip-10-0-0-143 folder1]# ccurl -s http://api.open-notify.org/iss-now.json | jq .
+{
+  "message": "success",
+  "iss_position": {
+    "latitude": "-45.4817",
+    "longitude": "30.9030"
+  },
+  "timestamp": 1614791554
+}
+
+
+
