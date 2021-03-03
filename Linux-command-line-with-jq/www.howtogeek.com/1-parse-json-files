@@ -2,6 +2,9 @@ https://www.howtogeek.com/529219/how-to-parse-json-files-on-the-linux-command-li
 https://jqplay.org/
 
 yum install jq -y
+yum install curl -y
+-------------------------------------------------------------------------------------------------------------------------------------------
+How to Make JSON Readable::::::::--------------
 
 curl -s http://api.open-notify.org/iss-now.json
 [root@ip-10-0-0-143 folder1]# curl -s http://api.open-notify.org/iss-now.json
@@ -22,5 +25,101 @@ curl -s http://api.open-notify.org/iss-now.json | jq .
   "timestamp": 1614791554
 }
 
+#####-
 
+[root@ip-10-0-0-143 folder1]# curl -s http://api.open-notify.org/iss-now.json | jq . > iss.json
+[root@ip-10-0-0-143 folder1]# cat iss.json
+{
+  "message": "success",
+  "iss_position": {
+    "latitude": "-21.5669",
+    "longitude": "63.8411"
+  },
+  "timestamp": 1614792135
+}
 
+#########------
+------------------------------------------------------------------------------------------------------------------------------------------------
+Accessing Data Values:::-
+As we saw above, jq can extract data values being piped through from JSON. It can also work with JSON stored in a file.
+We’re going to work with local files so the command line isn’t cluttered with curl commands. This should make it a bit easier to follow.
+jq .message iss.json
+
+[root@ip-10-0-0-143 folder1]# jq .message iss.json
+"success"
+
+[root@ip-10-0-0-143 folder1]# jq .timestamp iss.json
+1614792135
+
+[root@ip-10-0-0-143 folder1]# jq .iss_position.latitude iss.json
+"-21.5669"
+
+#To extract multiple values, you have to do the following:
+
+List the key names on the command line.
+Separate them with commas (,).
+Enclose them in quotation marks (") or apostrophes (').
+
+[root@ip-10-0-0-143 folder1]# jq ".iss_position.latitude, .timestamp" iss.json
+"-21.5669"
+1614792135
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Working with Arrays::::::::::::;-------------------
+
+Let’s grab a different JSON object from NASA.
+This time, we’ll use a list of the astronauts who are in space right now:
+curl -s http://api.open-notify.org/astros.json
+curl -s http://api.open-notify.org/astros.json | jq .
+[root@ip-10-0-0-143 folder1]# curl -s http://api.open-notify.org/astros.json | jq .
+{
+  "message": "success",
+  "number": 7,
+  "people": [
+    {
+      "craft": "ISS",
+      "name": "Sergey Ryzhikov"
+    },
+    {
+      "craft": "ISS",
+      "name": "Kate Rubins"
+    },
+    {
+      "craft": "ISS",
+      "name": "Sergey Kud-Sverchkov"
+    },
+    {
+      "craft": "ISS",
+      "name": "Mike Hopkins"
+    },
+    {
+      "craft": "ISS",
+      "name": "Victor Glover"
+    },
+    {
+      "craft": "ISS",
+      "name": "Shannon Walker"
+    },
+    {
+      "craft": "ISS",
+      "name": "Soichi Noguchi"
+    }
+  ]
+}
+
+curl -s http://api.open-notify.org/astros.json | jq . > astro.json
+
+#Now let’s type the following to check our file:
+
+less astro.json
+q or Q or :q or :Q or ZZ	Exits less.
+
+we  use the JSON dot notation to access the values. We must also include the brackets ([]) in the name of the array
+
+[root@ip-10-0-0-143 folder1]# jq ".people[].name" astro.json
+"Sergey Ryzhikov"
+"Kate Rubins"
+"Sergey Kud-Sverchkov"
+"Mike Hopkins"
+"Victor Glover"
+"Shannon Walker"
+"Soichi Noguchi"
