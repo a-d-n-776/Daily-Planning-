@@ -400,4 +400,5 @@ jq ".[0] | length" strikes.json
 The keys Function:::---------
 
 
+https://www.howtogeek.com/529219/how-to-parse-json-files-on-the-linux-command-line-with-jq/
 
