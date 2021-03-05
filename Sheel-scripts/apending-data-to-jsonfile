@@ -1,0 +1,17 @@
+[root@ip-10-0-0-143 devops]# cat sample.json
+[root@ip-10-0-0-143 devops]# cat >> sample.json
+{"name" :"sam",
+"age":23,
+"designation":"doctor"}
+^C
+[root@ip-10-0-0-143 devops]# cat sample.json
+{"name" :"sam",
+"age":23,
+"designation":"doctor"}
+[root@ip-10-0-0-143 devops]# sed -i '$s/}/,\n"location":"canada"}/' sample.json
+[root@ip-10-0-0-143 devops]# cat sample.json
+{"name" :"sam",
+"age":23,
+"designation":"doctor",
+"location":"canada"}
+[root@ip-10-0-0-143 devops]#
