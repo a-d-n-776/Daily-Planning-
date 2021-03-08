@@ -303,7 +303,7 @@ ec2-user:x:1000:
 naveen:x:1001:
 kumar:x:1002:
 
-#adding kumar to naveen group or vias versa
+#adding naveen to kumar group ....below cmd
 [root@ip-10-0-0-143 home]# usermod -G naveen kumar
 [root@ip-10-0-0-143 home]# id naveen
 uid=1001(naveen) gid=1001(naveen) groups=1001(naveen)
