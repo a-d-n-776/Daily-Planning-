@@ -84,3 +84,29 @@ Password
 [‎3/‎4/‎2021 3:30 PM]  Srinivasan, Bhuvaneshwaran, Vodafone UK (External):  
 https://codecept.io/commands/ 
 
+16-03-2021---------
+Getting CSV Parser error;;;;;
+
+echo 'Automation Started'
+echo "$(System.DefaultWorkingDirectory)"
+npm config set puppeteer_skip_chromium_download false
+npm install
+npm install puppeteer --unsafe-perm=true
+npm i mocha-junit-reporter
+cd node_modules
+npm i csv-parser
+cd ..
+npx codeceptjs init
+
+
+........
+
+# Write your commands here
+
+echo 'Automation Started'
+echo "$(System.DefaultWorkingDirectory)"
+npm config set puppeteer_skip_chromium_download false
+npm install
+npm install puppeteer --unsafe-perm=true
+npm i mocha-junit-reporter
+npx codeceptjs init
