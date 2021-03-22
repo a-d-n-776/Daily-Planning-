@@ -1,0 +1,60 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: sum_variable_group
+
+
+
+stages:
+
+
+- stage: STAGE_3
+  displayName: DEPLOYMENT-STAGE
+  jobs:
+  - job: Job3A
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+           sudo apt-get update -y
+           sudo apt-get install jq -y
+           sudo apt-get curl -y
+           sudo apt install curl -y
+           echo '{ "name":"John", "age":31, "city":"New York" }' | jq .
+
+           echo 'Hello world'
+
+           echo $(PACKAGEJSON) > packagePipeline.json
+           cat packagePipeline.json
+          
+
+           curl -s http://api.open-notify.org/iss-now.json
+           curl -s http://api.open-notify.org/iss-now.json | jq .
+           curl -s http://api.open-notify.org/iss-now.json | jq . > iss.json
+           cat iss.json
+           
+
+           jq .message iss.json
+           jq .timestamp iss.json
+           jq .iss_position.latitude iss.json
+           jq ".iss_position.latitude, .timestamp" iss.json
+           jq "del(.message)" iss.json
+
+           cat iss.json
+
+
+           curl -s http://api.open-notify.org/astros.json | jq . > astro.json
+           cat astro.json
+
+           jq ".people[].name" astro.json
+           jq ".people[].craft" astro.json
+           jq ".people[1].name" astro.json
+           jq ".people[2:4]" astro.json
+           jq ".people[] | .name" astro.json
+           
+           
