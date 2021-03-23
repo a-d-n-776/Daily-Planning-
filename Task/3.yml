@@ -1,0 +1,45 @@
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  - group: sum_variable_group
+
+
+
+stages:
+
+
+- stage: STAGE_3
+  displayName: DEPLOYMENT-STAGE
+  jobs:
+  - job: Job3A
+    steps:
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+           sudo apt-get update -y
+           sudo apt-get install jq -y
+           sudo apt-get curl -y
+           sudo apt install curl -y
+           echo '{ "name":"John", "age":31, "city":"New York" }' | jq .
+
+           echo 'Hello world'
+
+           echo $(buildReleaseInfo) > buildReleaseInfo.json
+
+           cat buildReleaseInfo.json
+
+    - task: CopyFiles@2
+      inputs:
+               Contents: '**/buildReleaseInfo.json'
+               TargetFolder: '$(build.artifactstagingdirectory)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
