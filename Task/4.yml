@@ -1,0 +1,161 @@
+#.https://docs.microsoft.com/en-us/azure/devops/pipelines/process/conditions?view=azure-devops&tabs=yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+name: $(release)_$(projectCode)_$(sprint)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+
+
+
+variables:
+ # - group: Task_git_task_ab
+  - template: templates/template1/variables.yml
+
+
+
+stages:
+
+- stage: Arithmetic_operations_stage
+  displayName: ' Arithmetic operations stage '
+
+  jobs:
+
+  - job: sum_of_parameters
+    displayName: ' 1_sum_of_parameters '
+    #condition: and(succeeded(), eq(variables.category, 'PACKAGE'))
+    #condition: always() # this step will always run, even if the pipeline is canceled
+    steps:
+    - template: templates/template1/sum.yml
+      parameters:
+        A: $(A)
+        B: $(B)
+
+
+  - job: sub_of_parameters
+    dependsOn: sum_of_parameters
+    condition: failed() 
+# this job will only run if job sum_of_parameters fails
+    displayName: ' 2_sub_of_parameters '
+    steps:
+    - template: templates/template1/sub.yml
+      parameters:
+        A: $(A)
+        B: $(B)
+
+
+  - job: mul_of_parameters
+    dependsOn: sum_of_parameters
+    condition: failed() 
+    # this job will only run if sum_of_parameters fails
+    displayName: ' 3_mul_of_parameters '
+   
+    steps:
+    - template: templates/template1/mul.yml
+      parameters:
+        A: $(A)
+        B: $(B)
+
+  - job: div_of_parameters
+    dependsOn: sum_of_parameters
+    condition: failed() 
+    # this job will only run if sum_of_parameters fails
+    displayName: ' 4_div_of_parameters '
+    #condition: and(succeeded(), eq(variables.category, 'PACKAGE'))
+    steps:
+    - template: templates/template1/div.yml
+      parameters:
+        A: $(A)
+        B: $(B)
+
+  - job: concat_of_parameters
+    displayName: ' 5_concat_of_parameters '
+    #condition: and(succeeded(), eq(variables.category, 'PACKAGE'))
+    steps:
+    - template: templates/template1/concat.yml
+      parameters:
+        A: $(A)
+        B: $(B)
+
+  - job: concatstrings_of_parameters
+    dependsOn: sum_of_parameters
+    condition: failed() 
+    # this job will only run if sum_of_parameters fails
+    displayName: ' 6_concatstrings_of_parameters '
+    steps:
+    - template: templates/template1/concatstrings.yml
+      parameters:
+        str1: $(str1)
+        str2: $(str2)
+
+  - job: attaching_artifact_to_pipeline
+    dependsOn: sum_of_parameters
+    #condition: failed() 
+    # this job will only run if sum_of_parameters fails
+    displayName: ' 7_attaching artifact to pipelines '
+    
+
+  - job: Job3A
+    steps:
+    
+    - task: Bash@3
+      inputs:
+        targetType: 'inline'
+        script: |
+           sudo apt-get update -y
+           sudo apt-get install jq -y
+           sudo apt-get curl -y
+           sudo apt install curl -y
+           echo '{ "name":"John", "age":31, "city":"New York" }' | jq .
+
+           echo 'Hello world'
+
+           echo $(buildReleaseInfo) > buildReleaseInfo.json
+
+           cat buildReleaseInfo.json
+
+    - task: CopyFiles@2
+      inputs:
+               Contents: '**/buildReleaseInfo.json'
+               TargetFolder: '$(build.artifactstagingdirectory)'
+    - task: PublishBuildArtifacts@1
+      inputs:
+        PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+
+
+
+- stage: Test
+  displayName: ' B_Test stage '
+  dependsOn: Arithmetic_operations_stage
+  condition: failed()  
+  jobs:
+
+  - job: Test
+
+- stage: DeployUS1
+  displayName: ' C_DeployUS1 stage '
+  dependsOn: Test    # this stage runs after Test
+  condition: failed()
+  jobs:
+
+  - job: DeployUS1
+ 
+- stage: DeployUS2
+  displayName: ' D_DeployUS2 stage '
+  dependsOn: Test    # this stage runs in parallel with DeployUS1, after Test
+  jobs:
+
+  - job: DeployUS2
+- stage: DeployEurope
+  displayName: ' E_DeployUS2 stage '
+  dependsOn:         # this stage runs after DeployUS1 and DeployUS2
+  - DeployUS1
+  - DeployUS2
+  jobs:
+
+  - job: DeployEurope
