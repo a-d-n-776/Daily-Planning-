@@ -1,0 +1,4 @@
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+npx codeceptjs run --reporter mocha-junit-reporter  (Before )
+npx codeceptjs run --profile uat --steps --grep "Login" --reporter mocha-junit-reporter (After)
+''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
