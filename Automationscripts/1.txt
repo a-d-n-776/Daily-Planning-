@@ -1,1 +1,14 @@
 ...
+
+# Write your commands here
+
+echo 'Automation Started'
+echo "$(System.DefaultWorkingDirectory)"
+npm config set puppeteer_skip_chromium_download false
+npm install
+npm i csv-parser
+npm install puppeteer --unsafe-perm=true
+npm i mocha-junit-reporter
+npx codeceptjs init
+npx codeceptjs run --profile construct --steps --grep "SalesUser_E2E"
+echo 'Automation ended'
