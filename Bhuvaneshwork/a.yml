@@ -1,0 +1,40 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  name: Pega-DNA-Non-Prod-Linux
+
+name: $(Project)_$(PackageName)_$(Version)_$(SourceBranchName)_$(Date:yyyyMMdd)$(Rev:.r)
+
+steps:
+- script: |
+    echo $(System.DefaultWorkingDirectory)
+    mkdir $(Project)
+  displayName: 'Create Directory for Project'
+
+- task: UniversalPackages@0
+  inputs:
+    command: 'download'
+    downloadDirectory: '$(System.DefaultWorkingDirectory)/$(Project)'
+    feedsToUse: 'internal'
+    vstsFeed: '6e9260d2-72d0-4635-bb4d-434b3f768223/c8da078d-ad38-4891-a0f4-387725eb03a1'
+    vstsFeedPackage: 'c1aa1656-8c58-4dce-bf7d-7e9669e3b0bb'
+    vstsPackageVersion: '0.0.6'
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(Project)'
+    ArtifactName: '$(PackageName)_$(Version)'
+    publishLocation: 'Container'
+
+- script: |
+    cd $(System.DefaultWorkingDirectory)/$(Project)
+    ls
+    cd ..
+    rm -rf $(Project)
+  condition: always()
+  displayName: 'Clean Up'
