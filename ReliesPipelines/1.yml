@@ -1,0 +1,63 @@
+cd $(System.ArtifactsDirectory)/_PEGA_ALIVE_NEBULA_VEB_APP/PEGA_ALIVE_ProjectInfo 
+FILE=$(System.ArtifactsDirectory)/_PEGA_ALIVE_NEBULA_VEB_APP/PEGA_ALIVE_ProjectInfo/buildReleaseInfo.json
+if [ -f "$FILE" ]; then
+echo "$FILE exists."
+
+buildID=$(cat buildReleaseInfo.json | jq -r '.buildInfo.buildID')
+projectCode=$(cat buildReleaseInfo.json | jq -r '.buildInfo.projectCode')
+pdUpdateAG=$(cat buildReleaseInfo.json | jq -r '.buildInfo.pdUpdateAG')
+rbUpdateAG=$(cat buildReleaseInfo.json | jq -r '.buildInfo.rbUpdateAG')
+isProductRollbackIncluded=$(cat buildReleaseInfo.json | jq -r '.buildInfo.isProductRollbackIncluded')
+isSQLRollbackIncluded=$(cat buildReleaseInfo.json | jq -r '.buildInfo.isSQLRollbackIncluded')
+execute_SQL_in_SIT=$(cat buildReleaseInfo.json | jq -r '.buildInfo.execute_SQL_in_SIT')
+execute_SQL_in_UAT=$(cat buildReleaseInfo.json | jq -r '.buildInfo.execute_SQL_in_UAT')
+execute_SQL_in_NFT=$(cat buildReleaseInfo.json | jq -r '.buildInfo.execute_SQL_in_NFT')
+execute_SQL_in_PROD=$(cat buildReleaseInfo.json | jq -r '.buildInfo.execute_SQL_in_PROD')
+
+echo "##vso[task.setvariable variable=buildID;isOutput=true]$buildID"
+echo "##vso[task.setvariable variable=projectCode;isOutput=true]$projectCode"
+echo "##vso[task.setvariable variable=pdUpdateAG;isOutput=true]$pdUpdateAG"
+echo "##vso[task.setvariable variable=rbUpdateAG;isOutput=true]$rbUpdateAG"
+echo "##vso[task.setvariable variable=isProductRollbackIncluded;isOutput=true]$isProductRollbackIncluded"
+echo "##vso[task.setvariable variable=isSQLRollbackIncluded;isOutput=true]$isSQLRollbackIncluded"
+echo "##vso[task.setvariable variable=execute_SQL_in_SIT;isOutput=true]$execute_SQL_in_SIT"
+echo "##vso[task.setvariable variable=execute_SQL_in_UAT;isOutput=true]$execute_SQL_in_UAT"
+echo "##vso[task.setvariable variable=execute_SQL_in_NFT;isOutput=true]$execute_SQL_in_NFT"
+echo "##vso[task.setvariable variable=execute_SQL_in_PROD;isOutput=true]$execute_SQL_in_PROD"
+
+if [[ "$pdUpdateAG" == "Yes" ]]
+then
+PDUpdateAccessGroupsList=$(cat buildReleaseInfo.json | jq -r '.PDUpdateAccessGroups.accessGroupList')
+PDUpdateApplicationName=$(cat buildReleaseInfo.json | jq -r '.PDUpdateAccessGroups.applicationName')
+PDUpdateApplicationVersion=$(cat buildReleaseInfo.json | jq -r '.PDUpdateAccessGroups.applicationVersion')
+
+echo "##vso[task.setvariable variable=PDUpdateAccessGroupsList;isOutput=true]$PDUpdateAccessGroupsList"
+echo "##vso[task.setvariable variable=PDUpdateApplicationName;isOutput=true]$PDUpdateApplicationName"
+echo "##vso[task.setvariable variable=PDUpdateApplicationVersion;isOutput=true]$PDUpdateApplicationVersion"
+fi
+
+if [[ "$rbUpdateAG" == "Yes" ]]
+then
+RBUpdateAccessGroupsList=$(cat buildReleaseInfo.json | jq -r '.RBUpdateAccessGroups.accessGroupList')
+RBUpdateApplicationName=$(cat buildReleaseInfo.json | jq -r '.RBUpdateAccessGroups.applicationName')
+RBUpdateApplicationVersion=$(cat buildReleaseInfo.json | jq -r '.RBUpdateAccessGroups.applicationVersion')
+
+echo "##vso[task.setvariable variable=RBUpdateAccessGroupsList;isOutput=true]$RBUpdateAccessGroupsList"
+echo "##vso[task.setvariable variable=RBUpdateApplicationName;isOutput=true]$RBUpdateApplicationName"
+echo "##vso[task.setvariable variable=RBUpdateApplicationVersion;isOutput=true]$RBUpdateApplicationVersion"
+
+fi
+
+echo  "$buildID is build ID"
+echo "$projectCode  is projectCode"
+echo "$pdUpdateAG is pdUpdateAG "
+echo "$rbUpdateAG is rbUpdateAG "
+echo "$isProductRollbackIncluded  is isProductRollbackIncluded"
+echo "$execute_SQL_in_SIT is execute_SQL_in_SIT"
+echo "$execute_SQL_in_UAT is execute_SQL_in_UAT "
+echo "$execute_SQL_in_NFT is execute_SQL_in_NFT"
+echo "$execute_SQL_in_PROD is execute_SQL_in_PROD "
+
+else 
+echo "$FILE does not exist. Cannot perform SIT Deployment"
+fi
