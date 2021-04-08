@@ -142,8 +142,7 @@ syntax: find / -option filename
    -----
    find / -name file1 # finding file1 in all folders
    
-[root@ip-10-0-0-143 f1]# cp file1 /tmp
-[root@ip-10-0-0-143 f1]# find / -name file1
+
 ----------------------------
 root@ip-10-0-0-100:/devops# ll
 total 32
@@ -162,6 +161,8 @@ root@ip-10-0-0-100:/devops# find / -name file1.txt
 
 
 -------------------------------
+[root@ip-10-0-0-143 f1]# cp file1 /tmp
+[root@ip-10-0-0-143 f1]# find / -name file1
 /tmp/file1
 /folder1/folder1a/file1
 /folder1/f1/file1
