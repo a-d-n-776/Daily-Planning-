@@ -362,6 +362,23 @@ passwd naveen
 we can login as a user needed some setup in AWS----------
 nano /etc/ssh/sshd_config
 PasswordAuthentication no to chane yes     cnt+o ent then cnt+x
+
+-----------------------------------------
+
+root@ip-10-0-0-100:/home# grep PasswordAuthentication  nano /etc/ssh/sshd_configgrep: nano: No such file or directory
+/etc/ssh/sshd_config:PasswordAuthentication no
+/etc/ssh/sshd_config:# PasswordAuthentication.  Depending on your PAM configuration,
+/etc/ssh/sshd_config:# PAM authentication, then enable this but set PasswordAuthentication
+root@ip-10-0-0-100:/home# nano /etc/ssh/sshd_config                             root@ip-10-0-0-100:/home# service sshd reload
+root@ip-10-0-0-100:/home# grep PasswordAuthentication  nano /etc/ssh/sshd_config
+grep: nano: No such file or directory
+/etc/ssh/sshd_config:PasswordAuthentication yes
+/etc/ssh/sshd_config:# PasswordAuthentication.  Depending on your PAM configuration,
+/etc/ssh/sshd_config:# PAM authentication, then enable this but set PasswordAuthentication
+root@ip-10-0-0-100:/home#
+
+
+----------------------------------------
  service sshd reload
   Login to server 
   naveen@publicip
