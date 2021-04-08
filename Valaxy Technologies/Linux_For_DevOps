@@ -330,7 +330,31 @@ uid=1001(naveen) gid=1001(naveen) groups=1001(naveen)
 uid=1002(kumar) gid=1002(kumar) groups=1002(kumar),1001(naveen)
 [root@ip-10-0-0-143 home]#
 
+--------------------------------
+root@ip-10-0-0-100:/home#  cat /etc/passwd 
+aws1:x:1001:1001::/home/aws1:/bin/sh
+aws2:x:1002:1002::/home/aws2:/bin/sh
+aws3:x:1003:1003::/home/aws3:/bin/sh
+aws34:x:1004:1004::/home/aws34:/bin/sh
+aws4:x:1005:1005::/home/aws4:/bin/sh
 
+
+root@ip-10-0-0-100:/home# usermod -G aws1 aws34
+root@ip-10-0-0-100:/home# usermod -G aws2 aws34
+root@ip-10-0-0-100:/home# usermod -G aws3 aws34
+root@ip-10-0-0-100:/home#  cat /etc/passwd | grep aws
+aws1:x:1001:1001::/home/aws1:/bin/sh
+aws2:x:1002:1002::/home/aws2:/bin/sh
+aws3:x:1003:1003::/home/aws3:/bin/sh
+aws34:x:1004:1004::/home/aws34:/bin/sh
+aws4:x:1005:1005::/home/aws4:/bin/sh
+root@ip-10-0-0-100:/home# id aws1
+uid=1001(aws1) gid=1001(aws1) groups=1001(aws1)
+root@ip-10-0-0-100:/home# id aws34
+uid=1004(aws34) gid=1004(aws34) groups=1004(aws34),1003(aws3)
+root@ip-10-0-0-100:/home#
+
+----------------------
 -----------------------------
 #20 - Linux for DevOps - Enable password based login to an EC2 instance
 cat /etc/passwd
