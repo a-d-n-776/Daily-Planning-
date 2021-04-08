@@ -144,6 +144,24 @@ syntax: find / -option filename
    
 [root@ip-10-0-0-143 f1]# cp file1 /tmp
 [root@ip-10-0-0-143 f1]# find / -name file1
+----------------------------
+root@ip-10-0-0-100:/devops# ll
+total 32
+drwxr-xr-x  6 root root 4096 Apr  7 10:23 ./
+drwxr-xr-x 20 root root 4096 Apr  7 09:32 ../
+drwxr-xr-x  5 root root 4096 Apr  7 09:41 azdevops/
+-rw-r--r--  1 root root   47 Apr  7 10:10 file1.txt
+-rw-r--r--  1 root root   51 Apr  7 10:07 file2.txt
+drwxr-xr-x  2 root root 4096 Apr  7 10:08 folder1/
+drwxr-xr-x  2 root root 4096 Apr  7 10:21 folder2/
+drwxr-xr-x  2 root root 4096 Apr  7 10:23 folder3/
+root@ip-10-0-0-100:/devops# find / -name file1.txt
+/devops/file1.txt
+/devops/folder3/file1.txt
+/devops/folder2/file1.txt
+
+
+-------------------------------
 /tmp/file1
 /folder1/folder1a/file1
 /folder1/f1/file1
